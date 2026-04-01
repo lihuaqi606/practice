@@ -20,12 +20,11 @@
     <script>
         async function test() {
             try {
-                // 关键：Vercel 接口路径是 /api/hello
                 const res = await fetch('/api/hello');
                 const data = await res.json();
                 document.getElementById('result').textContent = JSON.stringify(data, null, 2);
             } catch (e) {
-                document.getElementById('result').textContent = '请求失败：' + e.toString();
+                document.getElementById('result').textContent = '错误：' + e.toString();
             }
         }
     </script>
