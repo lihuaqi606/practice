@@ -1,11 +1,7 @@
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return jsonify({
-        "message": "你好！来自Python后端",
-        "status": "运行成功",
-        "info": "部署在Vercel"
-    })
+# 这是 Vercel 标准 Python 服务端函数，不是普通 Flask
+def handler(request):
+    return {
+        "message": "你好！后端连接成功",
+        "status": "ok",
+        "author": "你的名字"
+    }
