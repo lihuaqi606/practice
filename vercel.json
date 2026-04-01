@@ -1,14 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "api/hello.py": {
+    "api/hello/**": {
       "runtime": "@vercel/python@4.6.0"
     }
   },
   "rewrites": [
     {
       "source": "/api/hello",
-      "destination": "/api/hello.py"
+      "destination": "/api/hello/index.py"
     },
     {
       "source": "/(.*)",
