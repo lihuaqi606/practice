@@ -2,29 +2,26 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>测试页面</title>
+    <title>Vercel 测试</title>
     <style>
-        body{margin:40px auto;text-align:center;font-family:Arial}
-        .box{max-width:400px;margin:0 auto;padding:30px;background:#f8f9fa;border-radius:12px}
-        button{padding:10px 20px;background:#0d6efd;color:white;border:none;border-radius:6px;cursor:pointer}
-        #result{margin-top:20px;padding:15px;background:#e9ecef;border-radius:6px;text-align:left;white-space:pre-wrap}
+        body{margin:40px;text-align:center;font-family:Arial}
+        #res{margin-top:20px;padding:15px;background:#f5f5f5;border-radius:8px;white-space:pre-wrap}
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>前后端测试页面</h1>
-        <button onclick="test()">测试后端接口</button>
-        <div id="result"></div>
-    </div>
+    <h1>✅ Vercel Python 部署测试</h1>
+    <button onclick="test()">点击测试后端接口</button>
+    <div id="res"></div>
 
     <script>
         async function test() {
             try {
                 const res = await fetch('/api/hello');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('res').textContent = JSON.stringify(data, null, 2);
             } catch (e) {
-                document.getElementById('result').textContent = '错误：' + e.toString();
+                document.getElementById('res').textContent = '❌ 请求失败：\n' + e.message;
             }
         }
     </script>
