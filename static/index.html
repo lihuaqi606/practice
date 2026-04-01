@@ -2,71 +2,31 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的全栈网页</title>
+    <title>测试页面</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #f0f4ff;
-            font-family: Arial, sans-serif;
-        }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #2d3748;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        button {
-            padding: 12px 24px;
-            background: #4299e1;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background: #3182ce;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f7fafc;
-            border-radius: 8px;
-            min-height: 50px;
-        }
+        body{margin:40px auto;text-align:center;font-family:Arial}
+        .box{max-width:400px;margin:0 auto;padding:30px;background:#f8f9fa;border-radius:12px}
+        button{padding:10px 20px;background:#0d6efd;color:white;border:none;border-radius:6px;cursor:pointer}
+        #result{margin-top:20px;padding:15px;background:#e9ecef;border-radius:6px;text-align:left;white-space:pre-wrap}
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>✅ 前后端项目运行成功</h1>
-        <p>点击按钮测试后端API</p>
-        <button onclick="getApiData()">测试后端接口</button>
+    <div class="box">
+        <h1>前后端测试页面</h1>
+        <button onclick="test()">测试后端接口</button>
         <div id="result"></div>
     </div>
 
     <script>
-        async function getApiData() {
-            const res = await fetch('/api/hello');
-            const data = await res.json();
-            document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+        async function test() {
+            try {
+                // 关键：Vercel 接口路径是 /api/hello
+                const res = await fetch('/api/hello');
+                const data = await res.json();
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            } catch (e) {
+                document.getElementById('result').textContent = '请求失败：' + e.toString();
+            }
         }
     </script>
 </body>
